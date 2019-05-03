@@ -151,10 +151,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MyEdge.cpp" />
-    <ClCompile Include="MyGraph.cpp" />
-    <ClCompile Include="MyIterator.cpp" />
-    <ClCompile Include="MyNode.cpp" />
     <ClCompile Include="Task 3.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,7 @@
 //
 
 #include "MyIterator.h"
+#include "MyEdge.h"
 #include "MyNode.h"
 #include "MyGraph.h"
 #include <iostream>
@@ -19,23 +20,72 @@ using namespace std;
 5. Направленный граф.
 
 Сделать итератор.
-Граф с узлами целых числе, граф с узлами строк.
+Граф с узлами целых чисел, граф с узлами строк.
 
 Операции :
 1) Получить количество узлов
-2) Пометить все узлы как посещенные
-3) Пометить все узлы как непосещенные
-4) Напечатать все узлы
-5) Напечатать инцедентные вершины узла
-6) Получить имя графа
+2) Напечатать все узлы
+3) Добавить новый узел
+4) Привязать узел к другому узлу
+5) Пометить все узлы как посещенные
+6) Пометить все узлы как непосещенные
+7) Посмотреть узлы, к которым привязан текущий
 */
 
 
 int main()
 {
-	setlocale(LC_ALL, "Russian"); // установка локализации для корректного отображения русских символов
+	auto* myGraph1 = new MyGraph<int>; // создание типизированного экземпляра класса 
 
+	myGraph1->add(10); // добавление узелка в конкретный граф
+	myGraph1->add(11);
+	myGraph1->add(99);
+	myGraph1->add(20);
+	myGraph1->add(10);
 
+	try
+	{
+		//myGraph1->connect(11, 2, 40); // связать Node[11] с Node[2] ребром веса 40
+		myGraph1->connect(1, 2, 10);
+		myGraph1->connect(2, 3, 7);
+
+		myGraph1->print(1);  // напечатать содержимое узла Node[1] и его рёбра
+		myGraph1->print(2);
+		//myGraph1->print(10);
+	}
+	catch (...)
+	{
+		cout << "Wrong node index" << endl;
+	}
+
+	
+
+	myGraph1->get_size(); // получить количество узлов графа
+
+	myGraph1->visit_all(); // посетить все
+
+	myGraph1->unvisit_all(); // снять посещение со всех
+
+	myGraph1->remove_last(); // удалить последний добавленный узелок
+
+	myGraph1->print();
+
+	myGraph1->print(false); // напечать посещенные(true) / непосещенные(false) узлы
+	
+	delete myGraph1; // высвобождение памяти
+
+	
+	auto* myGraph2 = new MyGraph<char>;
+	myGraph2->add('a');
+	myGraph2->add('b');
+	myGraph2->print(); // напечатать содержимое графа
+	myGraph2->get_size(); // получить количество узлов графа
+	delete myGraph2;
+	
 	cin.ignore();
-	cin.ignore(); // для удобства отладки
+	cin.ignore();
+
+	return 0; 
 }
+
+// setlocale(LC_ALL, "Russian"); // установка локализации для корректного отображения русских символов
