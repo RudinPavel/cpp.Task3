@@ -12,6 +12,11 @@ private:
 	int id = 0;
 	bool is_visited = false;
 public:
+	vector<MyEdge<T>*> get_edges() 
+	{
+		return this->edges;
+	}
+
 	MyNode(T value, int id) 
 	{
 		this->value = value;

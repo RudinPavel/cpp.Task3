@@ -1,7 +1,6 @@
 ﻿// Task 3.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
-#include "MyIterator.h"
 #include "MyEdge.h"
 #include "MyNode.h"
 #include "MyGraph.h"
@@ -19,7 +18,6 @@ using namespace std;
 
 5. Направленный граф.
 
-Сделать итератор.
 Граф с узлами целых чисел, граф с узлами строк.
 
 Операции :
@@ -29,7 +27,7 @@ using namespace std;
 4) Привязать узел к другому узлу
 5) Пометить все узлы как посещенные
 6) Пометить все узлы как непосещенные
-7) Посмотреть узлы, к которым привязан текущий
+7) Посмотреть узлы, к которым привязан текущий (напечатать информацию конкретного узла)
 */
 
 
@@ -37,51 +35,70 @@ int main()
 {
 	auto* myGraph1 = new MyGraph<int>; // создание типизированного экземпляра класса 
 
-	myGraph1->add(10); // добавление узелка в конкретный граф
-	myGraph1->add(11);
-	myGraph1->add(99);
-	myGraph1->add(20);
-	myGraph1->add(10);
+	myGraph1->add(1); // добавление узелка в конкретный граф
+	myGraph1->add(2);
+	myGraph1->add(3);
+	myGraph1->add(4);
+	myGraph1->add(5);
+	myGraph1->add(6);
+
+	//auto it = myGraph1->begin();
+	//cout << it.get_value() << endl;
+	//auto it2 = myGraph1->end();
 
 	try
 	{
 		//myGraph1->connect(11, 2, 40); // связать Node[11] с Node[2] ребром веса 40
-		myGraph1->connect(1, 2, 10);
-		myGraph1->connect(2, 3, 7);
+		myGraph1->connect(1, 2, 0);
+		myGraph1->connect(2, 3, 0);
+		myGraph1->connect(3, 4, 0);
+		myGraph1->connect(1, 4, 0);
+		myGraph1->connect(4, 6, 0);
+		myGraph1->connect(1, 5, 0);
 
-		myGraph1->print(1);  // напечатать содержимое узла Node[1] и его рёбра
-		myGraph1->print(2);
+		//myGraph1->print(1);  // напечатать содержимое узла Node[1] и его рёбра
+		//myGraph1->print(2);
 		//myGraph1->print(10);
 	}
 	catch (...)
 	{
-		cout << "Wrong node index" << endl;
+		cout << "Wrong node index!" << endl;
 	}
 
 	
 
-	myGraph1->get_size(); // получить количество узлов графа
+	cout << myGraph1->get_size() << endl; // получить количество узлов графа
 
-	myGraph1->visit_all(); // посетить все
+	//myGraph1->visit_all(); // посетить все
 
-	myGraph1->unvisit_all(); // снять посещение со всех
+	//myGraph1->unvisit_all(); // снять посещение со всех
 
-	myGraph1->remove_last(); // удалить последний добавленный узелок
+	//myGraph1->depth_bypass(myGraph1->return_nodes().at(0));
 
-	myGraph1->print();
+	myGraph1->breadth_bypass(myGraph1->return_nodes().at(0));
 
-	myGraph1->print(false); // напечать посещенные(true) / непосещенные(false) узлы
+	myGraph1->print(true);
+	
+	myGraph1->unvisit_all();
+
+	myGraph1->print(false);
+
+	// myGraph1->print(false); // напечать посещенные(true) / непосещенные(false) узлы
 	
 	delete myGraph1; // высвобождение памяти
 
-	
+	/*
 	auto* myGraph2 = new MyGraph<char>;
 	myGraph2->add('a');
-	myGraph2->add('b');
+	myGraph2->add('s');
+	myGraph2->add('a');
+	myGraph2->add('t');
+	myGraph2->add('w');
+	myGraph2->add('q');
 	myGraph2->print(); // напечатать содержимое графа
 	myGraph2->get_size(); // получить количество узлов графа
 	delete myGraph2;
-	
+	*/
 	cin.ignore();
 	cin.ignore();
 

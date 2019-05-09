@@ -2,25 +2,32 @@
 
 template <class T> class MyEdge
 {
-	T from;
-	T to;
-	int weight = 0;
+private:
+	int index_from = -1;
+	int index_to = -1;
+	int weight = -1;
 public:
-	MyEdge(T from, T to, int weight)
+	
+	MyEdge(int index_from, int index_to, int weight)
 	{
-		this->from = from;
-		this->to = to;
+		this->index_from = index_from;
+		this->index_to = index_to;
 		this->weight = weight;
 	}
 
-	T get_to() 
+	int get_from()
 	{
-		return to;
+		return this->index_from;
+	}
+
+	int get_to()
+	{
+		return this->index_to;
 	}
 
 	int get_weight()
 	{
-		return weight;
+		return this->weight;
 	}
 	~MyEdge() {};
 };
