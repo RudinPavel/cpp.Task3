@@ -1,28 +1,30 @@
 #pragma once
 
+template <class T> class MyNode;
+
 template <class T> class MyEdge
 {
 private:
-	int index_from = -1;
-	int index_to = -1;
+	MyNode<T>* from;
+	MyNode<T>* to;
 	int weight = -1;
 public:
 	
-	MyEdge(int index_from, int index_to, int weight)
+	MyEdge(MyNode<T>* from, MyNode<T>* to, int weight)
 	{
-		this->index_from = index_from;
-		this->index_to = index_to;
+		this->from = from;
+		this->to = to;
 		this->weight = weight;
 	}
 
-	int get_from()
+	MyNode<T>* get_from()
 	{
-		return this->index_from;
+		return this->from;
 	}
 
-	int get_to()
+	MyNode<T>* get_to()
 	{
-		return this->index_to;
+		return this->to;
 	}
 
 	int get_weight()

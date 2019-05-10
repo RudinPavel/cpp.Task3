@@ -29,8 +29,5 @@
     <ClInclude Include="MyEdge.h">
       <Filter>Исходные файлы\Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MyIterator.h">
-      <Filter>Исходные файлы\Файлы заголовков</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

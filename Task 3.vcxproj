@@ -156,7 +156,6 @@
   <ItemGroup>
     <ClInclude Include="MyEdge.h" />
     <ClInclude Include="MyGraph.h" />
-    <ClInclude Include="MyIterator.h" />
     <ClInclude Include="MyNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
